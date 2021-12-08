@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-const Home = () => {
-
+const Home = ({username}) => {
+  console.log("this is username", username)
   return (
     <div>
-      <h1 className="text-center">Welcome to the Home component</h1>
+      <h1 className="text-center">Welcome to the Home component, {username}</h1>
     </div>
   );
 };

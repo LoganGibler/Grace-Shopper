@@ -16,8 +16,8 @@ const Register = ({ isLoggedIn, setIsLoggedIn }) => {
           onSubmit={async (e) => {
             e.preventDefault();
             try {
-              const { results } = await registerUser(username, password, cart, canSell);
-              console.log("this is results", results)
+              const { token } = await registerUser(username, password, cart, canSell);
+              console.log("this is token in register comp", token)
               storeToken(results)
               setUsername("")
               setPassword("")

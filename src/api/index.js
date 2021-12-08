@@ -1,6 +1,7 @@
 import axios from "axios";
 // const BASE = "https://floating-depths-70534.herokuapp.com/api"
 const BASE = "http://localhost:5000/api";
+import { storeToken, storeUser} from "../auth";
 export async function getAllProducts() {
   try {
     // console.log("trying to get all products")
@@ -14,9 +15,9 @@ export async function getAllProducts() {
 }
 
 export async function registerUser(username, password, cart, canSell) {
-  console.log(username, password, cart, canSell);
+  console.log("this is whats passed in",username, password, cart, canSell);
   try {
-    const { data } = await axios.post(`${BASE}/users/register`, {
+    const { data } = await axios.post(`http://localhost:5000/api/users/register`, {
       username: username,
       password: password,
       cart: cart,
@@ -37,6 +38,7 @@ export async function loginUser(username, password) {
       username: username,
       password: password,
     });
+    console.log("this is data from loginUser",data)
     storeToken(data.token);
     storeUser(data.user.username);
     return data;

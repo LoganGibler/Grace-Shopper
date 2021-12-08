@@ -32,10 +32,10 @@ async function createUser(reportFields) {
     } = await client.query(
       `
     INSERT INTO users(username, password, cart, canSell)
-    VALUES ($1, $2, $3, false)
+    VALUES ($1, $2, $3, $4)
     RETURNING *
     `,
-      [username, password, cart]
+      [username, password, cart, canSell]
     );
     // return the new report
     console.log(users)

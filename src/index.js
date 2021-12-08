@@ -40,7 +40,7 @@ const App = () => {
         <Navigation isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Switch>
           <Route path="/home">
-            <Home />
+            <Home username={username}/>
           </Route>
           <Route path="/login">
             <Login

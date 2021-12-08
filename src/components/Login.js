@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Form, Button, Col, ButtonToolbar, FormGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-
-const Login = ({ isLoggedIn, setIsLoggedIn, setUsername, username }) => {
+import { loginUser } from "../api";
+const Login = ({ isLoggedIn, setIsLoggedIn}) => {
 let history = useHistory()
-
-let [password, setPassword] = useState("");
+const [username, setUsername] = useState("");
+const [password, setPassword] = useState("");
   return (
     <div className="Login">
       <Col md={{ span: 4, offset: 2 }} className="Login">
