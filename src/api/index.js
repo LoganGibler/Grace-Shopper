@@ -47,9 +47,23 @@ export async function loginUser(username, password) {
   }
 }
 
+export async function getOrder() {
+  try {
+    const { data } = await axios.get(`http://localhost:5000/api/cart`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+          console.log("this is data of cart", data)
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function addProductToOrder(productId, userId){
   try {
-    const { data } = await axios.patch(`http://localhost:5000/api/products`, {
+    const { data } = await axios.post(`http://localhost:5000/api/products`, {
         productId: productId,
         userId: userId
     })

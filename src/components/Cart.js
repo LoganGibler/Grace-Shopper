@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 
-const Cart = ({cartItems, setCartItems}) => {
+const Cart = () => {
 
   return (
     <div>
       <h1 className="text-center">Shopping Cart</h1>
       <div className="cart-items">
-           {
+           {/* {
              cartItems.Length ? cartItems.map((item)=>{
                console.log("this is item",item)
                 return (
@@ -17,7 +17,7 @@ const Cart = ({cartItems, setCartItems}) => {
                   </div>
                 )
              }) : null
-           }
+           } */}
       </div>
     </div>
   );

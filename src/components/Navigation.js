@@ -3,13 +3,12 @@ import { useHistory, Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./myStyles.css";
 
-
 const Navigation = ({ isLoggedIn, setIsLoggedIn }) => {
   const history = useHistory();
 
   return (
     <div>
-      <Navbar  variant="primary">
+      <Navbar variant="primary">
         <Container>
           <Navbar.Brand>
             <Nav.Link
@@ -50,7 +49,16 @@ const Navigation = ({ isLoggedIn, setIsLoggedIn }) => {
                 Register
               </Nav.Link>
             )}
-
+            {isLoggedIn ? (
+              <Nav.Link
+                type="submit"
+                onClick={() => {
+                  history.push("/mycart");
+                }}
+              >
+                My Cart
+              </Nav.Link>
+            ) : null}
             <Nav.Link
               type="submit"
               onClick={() => {

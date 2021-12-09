@@ -16,13 +16,15 @@ import {
   Home,
   Products,
   Footer,
+  Cart
 } from "./components";
-import { getAllProducts, getAllRoutines} from "./api" 
+import { getAllProducts, getAllRoutines, getOrder} from "./api" 
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState("");
   const [username, setUsername] = useState("");
   const [allProducts, setAllProducts] = useState([]);
+  const [orderItems, setOrderItems] = useState([]);
 
 
   async function fetchAllProducts(){
@@ -30,8 +32,16 @@ const App = () => {
     console.log("this is data",data)
     setAllProducts(data);
   }
+
+  const fetchAllOrderItems = async () => {
+    const data = await getOrder();
+    setOrderItems(data);
+    console.log(orderItems, "useEffect getOrder");
+  };
+
   useEffect(() => {
-    fetchAllProducts()
+    fetchAllProducts();
+    fetchAllOrderItems();
   }, []);
 
   return (
@@ -58,6 +68,9 @@ const App = () => {
           </Route>
           <Route path="/products">
             <Products allProducts={allProducts} setAllProducts={setAllProducts}/>
+          </Route>
+          <Route path="/mycart">
+            <Cart orderItems={orderItems} setOrderItems={setOrderItems}/>
           </Route>
         </Switch>
         <Footer />

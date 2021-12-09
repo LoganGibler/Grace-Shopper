@@ -4,14 +4,14 @@ const jwt = require("jsonwebtoken");
 
 const { getAllOrders, createOrder, getOpenOrderById, addProductToOrder, closeOrder } = require("../db");
 
-ordersRouter.get("/", async (req, res) => {
-  console.log("request to orders");
-  const orders = await getAllOrders();
+// ordersRouter.get("/", async (req, res) => {
+//   console.log("request to orders");
+//   const orders = await getAllOrders();
 
-  res.send({
-    orders,
-  });
-});
+//   res.send({
+//     orders,
+//   });
+// });
 
 ordersRouter.get("/myOrder", async (req, res) => {
   console.log("request to orders");

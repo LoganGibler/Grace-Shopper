@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const { JWT_SECRET = "neverTell" } = process.env;
-const { getAllUsers, getUserByUsername, createUser, createOrder } = require("../db");
+const { getAllUsers, getUserByUsername, createUser, createOrder, getOrdersById } = require("../db");
 
 // UPDATE
 usersRouter.get("/", async (req, res) => {
@@ -89,4 +89,25 @@ usersRouter.post("/login", async (req, res, next) => {
   }
 });
 
+
+usersRouter.get("/cart", async (req, res, next) => {
+  console.log("Get Request was made to /cart")
+    // const { id } = req.body;
+    console.log("ID", req.body)
+    const cart = await getOrdersById(req)
+    console.log(cart,"cart stuff from routes")
+    if(cart){
+    res.send(
+      cart
+    );
+  }
+    if(!cart){
+    res.status(401)
+    next({
+      name: 'No Cart Items',
+      message: 'No Cart Items'
+  });
+  }
+  next()
+});
 module.exports = usersRouter;
